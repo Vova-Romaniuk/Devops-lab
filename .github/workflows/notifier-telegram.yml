@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  notifyTelegram:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: send custom message
