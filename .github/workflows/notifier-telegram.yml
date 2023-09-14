@@ -1,15 +1,20 @@
-name: Send notifications to telegram
+name: Notifier
+
 on:
-  push
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  build:
-    name: A job to launch telegram notifications
+  notifyTelegram:
     runs-on: ubuntu-latest
     steps:
-    - name: Send notifications
-      id: send_notifications
-      uses: danilat/externalized-telegram-notifications-action@master
+    - name: send custom message
+      uses: appleboy/telegram-action@master
       with:
-        to: ${{ secrets.TELEGRAM_ID_OR_CHANNEL }}
+        to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        content-url: ${{ secrets.CONTENT_URL }}
+        message: |
+          The ${{ github.event_name }} event triggered final step.
+          echo This event is a pull request that had an assignee removed.
