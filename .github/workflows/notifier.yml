@@ -1,13 +1,9 @@
 name: telegram message
-on: [push]
-jobs:
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: send default message
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
+on:
+  pull_request:
+    types: [opened, review_requested]
+- name: Pull Request Telegram
+  uses: F2had/pr-telegram-action@v1.0.0
+  with: 
+    bot_token: '${{ secrets.BOTTOKEN }}' # Your bot token from github secrets
+    chat_id: '${{ secrets.CHATID }}' # Your chat id from github secrets
