@@ -1,15 +1,16 @@
-name: telegram message
-on: [push]
+name: Send notifications to telegram
+on:
+  push
 jobs:
-
   build:
-    name: Build
+    name: A job to launch telegram notifications
     runs-on: ubuntu-latest
     steps:
-      - name: send telegram message on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.actor }} created commit:
+    - name: Send notifications
+      id: send_notifications
+      uses: danilat/externalized-telegram-notifications-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_ID_OR_CHANNEL }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        content-url: ${{ secrets.CONTENT_URL }}
+        parse_mode: html
