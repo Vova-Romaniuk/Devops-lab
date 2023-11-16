@@ -10,3 +10,4 @@ gfgfgfgfgf
 gfgепапbfbfbghfgfgfgfgfgf b bfg fg hf 
 пhhhbvbvbhfghfgh fhfg hfg hfghfgh fghgggfgf gf hg
 gfgfgfhggfhgfhgfh
+* * * * * /Users/vovaromanyuck/Desktop/Devops_lab/cronjob/cronjob-myNodeApp.sh
